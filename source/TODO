@@ -1,5 +1,0 @@
-- flush print für Teilschritte
-- ouputdir als notwendiges arg
-- Schreibrecht Output checken
-- fontcolor: Fehler, done
-- python 3.4 testen + py2exe vs pyinstallet+upx
