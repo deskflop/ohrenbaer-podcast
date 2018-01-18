@@ -14,7 +14,7 @@ pip install -r requirements.txt
 ### Quick start
 Just run script to start loading available files.
 ```
-python main.py'
+python main.py
 ```
 
 ### Optional arguments
