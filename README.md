@@ -1,4 +1,4 @@
-# ohrenbaer-podcast-load-py
+# ohrenbaer-podcast
 Script which helps to load all available podcast audio files from [OHRENBÄREN-Podcast][lnk_podcast] via parsing the site-content for downloadlinks
 
 ## Getting Started
