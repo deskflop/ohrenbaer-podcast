@@ -33,11 +33,6 @@ Specify output dir (default: %userprofile%/Desktop/ohrenbaer_podcast)
 --output-dir <PATH>, -o <PATH>
 ```
 
-Specify URL to podcast site with download links (default: [link][lnk_podcast])
-```
---podcast-url <URL>, -u <URL>
-```
-
 ## Contribution
 
 Feel free to send pull requests.

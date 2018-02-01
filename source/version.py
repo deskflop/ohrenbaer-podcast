@@ -2,6 +2,9 @@
 """
 
 Changelog
+v0.2.1
++ minor code changes/cleanup regarding unicode
+
 v0.2.0
 + removed arg 'podcast-url'
 + set url for podcast to https://www.ohrenbaer.de/sendung/jahresarchive/uebersicht-jahresarchive.html
@@ -14,5 +17,5 @@ v0.1.0
 + requirements.txt
 """
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 __requires__ = ['requests', 'colorama', 'urllib', 'lxml']

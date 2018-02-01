@@ -1,7 +1,6 @@
 #!/usr/bin/env python3 or #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-# TODO fontcolor: Fehler, done
 # TODO python 3.4 testen + py2exe vs pyinstallet+upx
 # TODO error handling überall??
 
@@ -25,7 +24,6 @@ class Col:
 
 def print_error(message):
     print(Col.ERR + 'Error: ' + Col.OFF + message)
-# print(Col.OK + 'OK - {0} from {1} files'.format(self.files_total, self.files_expected) + Col.OFF)
 
 
 def print_warning(message):
@@ -37,6 +35,7 @@ def title_to_filename(title, replace=True):
     Converts the title of a audio file into a valid filename
 
     :param str title: The title of a audio file
+    :param bool replace: Replace blanks by underline
     :return: The valid filename for the audio file
     :rtype: str
     """
@@ -86,6 +85,7 @@ def process_story(output_dir, url):
     else:
         print('\t' + Col.OK + 'All files available' + Col.OFF)
     output_dir.mkdir(parents=True)
+    output_dir = output_dir.resolve()
     # process single episodes
     for n, article in enumerate(articles_audiofiles):
         # download link
@@ -154,10 +154,8 @@ def process_year(output_dir, url):
 
     for n, atr in enumerate(stories):
         data = stories[atr]
-        print('({0}/{1}) {2}'.format(n + 1, total_stories, title_to_filename(data['title'])))
-        process_story(output_dir=Path(os.path.abspath(os.path.join(output_dir.as_posix(),
-                                                                   title_to_filename(data['title'], replace=False)))),
-                      url=data['url'])
+        print('({0}/{1}) {2}'.format(n + 1, total_stories, data['title']))
+        process_story(output_dir=Path(output_dir, data['title']), url=data['url'])
     return 0
 
 
@@ -190,7 +188,7 @@ def main(podcast_url, output_dir, year):
     except:
         print_error('not handled - ' + sys.exc_info()[0])
         return 1
-
+    output_dir = output_dir.resolve()
     # parse years from archive
     tree = html.fromstring(page.content)
     article_years = tree.xpath('//div[@id="main"]//article[contains(@class,"manualteaser")]')
@@ -230,6 +228,7 @@ if __name__ == "__main__":
                         help="Specific year which is checked in the arcive for available audio files")
     parser.add_argument('-v', '--version', action='version', version='%(prog)s v{0}'.format(__version__))
     args = parser.parse_args()
+    ret = 0
     ret = main(podcast_url='https://www.ohrenbaer.de/sendung/jahresarchive/uebersicht-jahresarchive.html',
                output_dir=args.output, year=args.year)
     if ret:
