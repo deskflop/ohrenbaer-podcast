@@ -1,5 +1,5 @@
 # ohrenbaer-podcast
-Script which helps to load all available podcast audio files from [OHRENBÄREN-Podcast][lnk_podcast] via parsing the site-content for downloadlinks
+Script which helps to load all available podcast audio files from [OHRENBÄREN-Podcast][lnk_podcast] via parsing the site-content for download links.
 
 ## Getting Started
 Get a fork of the repo or download code
