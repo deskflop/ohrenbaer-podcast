@@ -1,8 +1,7 @@
-#!/usr/bin/env python3 or #!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# TODO python 3.4 testen + py2exe vs pyinstallet+upx
-# TODO error handling überall??
+# TODO error handling ueberall??
 
 import sys, requests, datetime, string, os
 from version import __version__
@@ -220,7 +219,6 @@ if __name__ == "__main__":
     versionstr = 'Ohrenbaeren Podcast Load v{0}'.format(__version__)
     print(versionstr)
     import argparse
-    parser = argparse.ArgumentParser()
     parser = argparse.ArgumentParser(description=versionstr, prog='opl')
     parser.add_argument('-o', '--output', metavar='<PATH>', default=Path(Path.cwd(), 'ohrenbaer_podcast'), type=Path,
                         help="Path to dir where audio files will be stored")
@@ -228,7 +226,6 @@ if __name__ == "__main__":
                         help="Specific year which is checked in the arcive for available audio files")
     parser.add_argument('-v', '--version', action='version', version='%(prog)s v{0}'.format(__version__))
     args = parser.parse_args()
-    ret = 0
     ret = main(podcast_url='https://www.ohrenbaer.de/sendung/jahresarchive/uebersicht-jahresarchive.html',
                output_dir=args.output, year=args.year)
     if ret:
